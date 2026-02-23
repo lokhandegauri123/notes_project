@@ -27,3 +27,14 @@ html{
   max-width: 20rem;
   color: rgb(195, 188, 188);
 }
+/* .note button{
+  width: 1rem;
+  color: white;
+  font
+} */
+.note-create-form{
+  display: flex;
+  gap: 1rem;
+  padding-inline: 3rem;
+  padding-block: 1rem;
+}
