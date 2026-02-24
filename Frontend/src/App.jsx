@@ -6,7 +6,7 @@ function App() {
   const [note, setNote] = useState([]);
   console.log("hello integration")
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
+    axios.get("https://notes-project-1-bro7.onrender.com/api/notes").then((res) => {
       setNote(res.data.notes);
     });
   }
@@ -18,7 +18,7 @@ function App() {
     e.preventDefault();
 
     const {title,description}= e.target.elements;
-    axios.post("http://localhost:3000/api/notes",{
+    axios.post("https://notes-project-1-bro7.onrender.com/api/notes",{
       title: title.value,
       description : description.value
     })
@@ -29,7 +29,7 @@ function App() {
   }
 
   function handleDelete(noteId){
-    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    axios.delete("https://notes-project-1-bro7.onrender.com/api/notes/"+noteId)
     .then((res)=>{
       console.log(res.data);
       fetchNotes();
@@ -38,7 +38,7 @@ function App() {
 
   function handleUpdate(noteId){
     const newDesc = prompt("Enter new description");
-    axios.patch("http://localhost:3000/api/notes/"+noteId,{description:newDesc})
+    axios.patch("https://notes-project-1-bro7.onrender.com/api/notes/"+noteId,{description:newDesc})
     .then((res)=>{
       console.log(res.data);
       fetchNotes();
