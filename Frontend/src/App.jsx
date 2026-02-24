@@ -28,8 +28,17 @@ function App() {
     })
   }
 
-  function handleDelete(NoteId){
-    axios.delete("http://localhost:3000/api/notes/"+NoteId)
+  function handleDelete(noteId){
+    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    .then((res)=>{
+      console.log(res.data);
+      fetchNotes();
+    })
+  }
+
+  function handleUpdate(noteId){
+    const newDesc = prompt("Enter new description");
+    axios.patch("http://localhost:3000/api/notes/"+noteId,{description:newDesc})
     .then((res)=>{
       console.log(res.data);
       fetchNotes();
@@ -51,6 +60,7 @@ function App() {
               <button onClick={()=>{
                 handleDelete(note._id)
               }}>Delete</button>
+              <button onClick={()=>handleUpdate(note._id)}>Update</button>
             </div>
           );
         })}
